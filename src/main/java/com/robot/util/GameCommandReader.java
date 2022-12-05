@@ -1,23 +1,33 @@
 package com.robot.util;
 
 import com.robot.exception.InvalidGameRobotException;
-import com.robot.exceptions.InvalidRobotException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Scanner;
 
 public class GameCommandReader {
-    public List<String> processFile(File fileName){
-        //validate whether file is readable
-        validateFile(fileName);
-        return null; //todo change logic
-    }
-    private void validateFile(File file){
-        if (file == null) {
+
+    private static Logger LOGGER = LoggerFactory.getLogger(GameCommandReader.class);
+    public List<String> processFile(File fileName) throws FileNotFoundException {
+        if (fileName == null) {
             throw new InvalidGameRobotException("File is not found");
         }
-        if (!file.exists()) {
-            throw new InvalidGameRobotException("File is not exist");
+        readFile(fileName);
+        return null; //todo change logic
+    }
+
+    private List<String> readFile(File file) throws FileNotFoundException {
+        List<String> resultList = new LinkedList<>();
+        try (Scanner fileScanner = new Scanner(file)){
+            while (fileScanner.hasNext()) {
+                LOGGER.info("result = " + fileScanner.nextLine());
+            }
         }
+        return resultList;
     }
 }
