@@ -1,6 +1,6 @@
 package com.robot;
 
-import com.robot.util.GameCommandReader;
+import com.robot.utility.GameCommandReader;
 
 import java.io.File;
 import java.io.FileNotFoundException;

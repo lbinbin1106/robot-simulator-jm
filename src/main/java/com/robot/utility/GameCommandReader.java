@@ -1,4 +1,4 @@
-package com.robot.util;
+package com.robot.utility;
 
 import com.robot.exception.InvalidGameRobotException;
 import org.slf4j.Logger;
