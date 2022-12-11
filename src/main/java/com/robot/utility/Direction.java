@@ -11,4 +11,13 @@ public enum Direction {
     SOUTH("SOUTH"),
     WEST("WEST");
     private String description;
+    public static Direction getDirection(String commandFacing) {
+        for (Direction facing : values()) {
+            if (commandFacing.equalsIgnoreCase(facing.getDescription())) {
+                return facing;
+            }
+        }
+        return null;
+    }
+
 }

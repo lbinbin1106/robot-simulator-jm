@@ -2,6 +2,7 @@ package com.robot.game;
 
 import com.robot.exception.InvalidGameRobotException;
 import com.robot.utility.Command;
+import com.robot.utility.Direction;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -36,9 +37,11 @@ public class Simulator {
         } catch (Exception ex) {
             throw new InvalidGameRobotException("Please only enter numbers");
         }
-        //Direction and position assigning
-
+        Direction direction = Direction.getDirection(commandPositionArrays[2]);
+        Position position = new Position(xValue,yValue,direction);
+        // place robot on maptable by position
     }
+
     private String otherCommand(Command currentCommand){
         return null;
     }
