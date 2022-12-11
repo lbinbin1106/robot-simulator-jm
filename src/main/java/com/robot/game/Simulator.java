@@ -39,7 +39,7 @@ public class Simulator {
         }
         Direction direction = Direction.getDirection(commandPositionArrays[2]);
         Position position = new Position(xValue,yValue,direction);
-        // place robot on maptable by position
+        robot.placeRobot(position,mapTable);
     }
 
     private String otherCommand(Command currentCommand){

@@ -11,4 +11,8 @@ public class MapTable {
     private int rowPosition;
     private int columnPosition;
 
+    public boolean isValidatePosition(Position initialPosition) {
+    //todo validate initialposition < maxXPosition, >=0
+        return true;
+    }
 }

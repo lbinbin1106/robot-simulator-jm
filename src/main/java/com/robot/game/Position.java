@@ -10,6 +10,10 @@ public class Position {
     private int xPos;
     private int yPos;
     private Direction direction;
+
+    private int maxXPos;
+    private int maxYPos;
+
     public Position(int xPos, int yPos, Direction direction){
         this.xPos = xPos;
         this.yPos = yPos;
