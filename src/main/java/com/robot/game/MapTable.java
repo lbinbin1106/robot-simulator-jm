@@ -12,7 +12,11 @@ public class MapTable {
     private int columnPosition;
 
     public boolean isValidatePosition(Position initialPosition) {
-    //todo validate initialposition < maxXPosition, >=0
+        int xValue = initialPosition.getXPos();
+        int yValue = initialPosition.getYPos();
+        if (xValue < 0 || xValue > rowPosition || yValue < 0 || yValue > columnPosition) {
+            return false;
+        }
         return true;
     }
 }

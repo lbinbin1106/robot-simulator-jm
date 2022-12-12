@@ -42,7 +42,25 @@ public class Simulator {
         robot.placeRobot(position,mapTable);
     }
 
-    private String otherCommand(Command currentCommand){
-        return null;
+    private String otherCommand(Command currentCommand) {
+        String output = "";
+        //Todo validate command position is not null
+        //Todo validate other command is not null
+        switch (currentCommand) {
+            case MOVE:
+                robot.move();
+                break;
+            case LEFT:
+                robot.turnLeft();
+                break;
+            case RIGHT:
+                robot.turnRight();
+                break;
+            case REPORT:
+                output = robot.reportPosition();
+                break;
+        }
+        return output;
     }
+
 }
