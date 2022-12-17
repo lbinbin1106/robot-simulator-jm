@@ -44,8 +44,7 @@ public class Simulator {
 
     private String otherCommand(Command currentCommand) {
         String output = "";
-        //Todo validate command position is not null
-        //Todo validate other command is not null
+        validateCommand(currentCommand);
         switch (currentCommand) {
             case MOVE:
                 robot.move();
@@ -61,6 +60,16 @@ public class Simulator {
                 break;
         }
         return output;
+    }
+
+    private void validateCommand(Command currentCommand) {
+        if (robot.getPosition() == null) {
+            throw new InvalidGameRobotException("Robot initial position is required");
+        }
+        if (currentCommand == null) {
+            throw new InvalidGameRobotException("Robot move command is required");
+
+        }
     }
 
 }

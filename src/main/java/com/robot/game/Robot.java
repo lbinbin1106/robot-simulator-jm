@@ -7,16 +7,17 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Robot {
-    //todo pass movement to position
     private Position position;
 
     public void move() {
-
+    // todo update position (x,y) based on command
     }
     public void turnLeft() {
+    // todo update direction (turnleft)
 
     }
     public void turnRight() {
+    // todo update direction (turnright)
 
     }
     public void placeRobot(Position initialPosition, MapTable mapTable) {
