@@ -24,5 +24,23 @@ public class Position {
     public String toString() {
         return xPos + "," + yPos + "," + direction.getDescription();
     }
-    // update position
+
+    public void updatePosition(int xMovement, int yMovement) {
+        if (yMovement == 0) {
+            setXPos(getUpdatePos(getXPos(), xMovement, maxXPos));
+        }
+        if (xMovement == 0) {
+            setYPos(getUpdatePos(getYPos(), yMovement, maxYPos));
+        }
+    }
+
+    private int getUpdatePos(int currentPos, int movement, int maxPos) {
+        int updatePos = currentPos + movement;
+        if (updatePos > maxPos) {
+            updatePos = maxPos;
+        }  else if (updatePos < 0) {
+            updatePos = 0;
+        }
+        return updatePos;
+    }
 }

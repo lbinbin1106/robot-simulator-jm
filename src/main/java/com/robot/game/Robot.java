@@ -1,6 +1,7 @@
 package com.robot.game;
 
 import com.robot.exception.InvalidGameRobotException;
+import com.robot.utility.Direction;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,14 +11,27 @@ public class Robot {
     private Position position;
 
     public void move() {
-    // todo update position (x,y) based on command
+        switch (position.getDirection()) {
+            case NORTH:
+                position.updatePosition(0,1);
+                break;
+            case SOUTH:
+                position.updatePosition(0,-1);
+                break;
+            case EAST:
+                position.updatePosition(1,0);
+                break;
+            case WEST:
+                position.updatePosition(-1,0);
+                break;
+        }
     }
     public void turnLeft() {
-    // todo update direction (turnleft)
+    // todo update direction rotate anticlockwise via Direction Enum
 
     }
     public void turnRight() {
-    // todo update direction (turnright)
+    // todo update direction rotate clockwise via Direction Enum
 
     }
     public void placeRobot(Position initialPosition, MapTable mapTable) {
