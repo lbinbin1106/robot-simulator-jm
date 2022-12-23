@@ -19,5 +19,8 @@ public enum Direction {
         }
         return null;
     }
-
+    public Direction changeDirection(int rotatePoint) {
+        int resultIndex = ((ordinal() + rotatePoint) + 4) % 4;
+        return values()[resultIndex];
+    }
 }

@@ -25,6 +25,9 @@ public class GameCommandReader {
         List<String> resultList = new LinkedList<>();
         try (Scanner fileScanner = new Scanner(file)){
             while (fileScanner.hasNext()) {
+                //Todo initiate MapTable, Simulator
+
+                //Todo pass file command to simulator
                 LOGGER.info("result = " + fileScanner.nextLine());
             }
         }

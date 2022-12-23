@@ -26,14 +26,15 @@ public class Robot {
                 break;
         }
     }
+
     public void turnLeft() {
-    // todo update direction rotate anticlockwise via Direction Enum
-
+      position.setDirection(position.getDirection().changeDirection(-1));
     }
+
     public void turnRight() {
-    // todo update direction rotate clockwise via Direction Enum
-
+      position.setDirection(position.getDirection().changeDirection(1));
     }
+
     public void placeRobot(Position initialPosition, MapTable mapTable) {
         if (mapTable == null) {
             throw new InvalidGameRobotException("Maptable not found");
