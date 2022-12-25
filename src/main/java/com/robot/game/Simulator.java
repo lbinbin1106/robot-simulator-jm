@@ -20,7 +20,7 @@ public class Simulator {
             if (command == Command.PLACE) {
                 placeCommand(commandArrays[1]);
             } else {
-                otherCommand(command);
+                output = otherCommand(command);
             }
         } catch (IllegalArgumentException ex) {
             throw new InvalidGameRobotException("Please enter valid command");
