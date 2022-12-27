@@ -22,9 +22,10 @@ repositories {
 }
 
 dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
     implementation 'org.slf4j:slf4j-api:2.0.5'
     implementation 'org.slf4j:slf4j-simple:2.0.5'
-    implementation 'org.projectlombok:lombok:1.18.24'
 
     testImplementation group: 'junit', name: 'junit', version: '4.11'
     testImplementation 'org.easymock:easymock:3.1'

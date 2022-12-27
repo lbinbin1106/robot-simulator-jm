@@ -14,18 +14,18 @@ public class Simulator {
     private Robot robot;
     public String executeCommand(String commandLine){
         String[] commandArrays = commandLine.split(" ");
-        String output = "";
+        String robotOutputPos = "";
         try {
             Command command = Command.valueOf(commandArrays[0]);
             if (command == Command.PLACE) {
                 placeCommand(commandArrays[1]);
             } else {
-                otherCommand(command);
+                robotOutputPos = otherCommand(command);
             }
         } catch (IllegalArgumentException ex) {
             throw new InvalidGameRobotException("Please enter valid command");
         }
-        return output;
+        return robotOutputPos;
     }
     private void placeCommand(String commands){
         int xValue = 0;

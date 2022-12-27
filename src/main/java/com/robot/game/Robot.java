@@ -1,7 +1,6 @@
 package com.robot.game;
 
 import com.robot.exception.InvalidGameRobotException;
-import com.robot.utility.Direction;
 import lombok.Getter;
 import lombok.Setter;
 

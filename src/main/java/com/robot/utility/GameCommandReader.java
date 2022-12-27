@@ -1,8 +1,9 @@
 package com.robot.utility;
 
 import com.robot.exception.InvalidGameRobotException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.robot.game.MapTable;
+import com.robot.game.Robot;
+import com.robot.game.Simulator;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,25 +13,32 @@ import java.util.Scanner;
 
 public class GameCommandReader {
 
-    private static Logger LOGGER = LoggerFactory.getLogger(GameCommandReader.class);
     public List<String> processFile(File fileName) throws FileNotFoundException {
         if (fileName == null) {
             throw new InvalidGameRobotException("File is not found");
         }
-        readFile(fileName);
-        return null; //todo change logic
+        return readFile(fileName);
     }
 
     private List<String> readFile(File file) throws FileNotFoundException {
         List<String> resultList = new LinkedList<>();
         try (Scanner fileScanner = new Scanner(file)){
-            while (fileScanner.hasNext()) {
-                //Todo initiate MapTable, Simulator
+            Simulator simulator = initSimulator();
+            String robotOutput = "";
+            String currentLine = "";
 
-                //Todo pass file command to simulator
-                LOGGER.info("result = " + fileScanner.nextLine());
+            while (fileScanner.hasNext()) {
+                currentLine = fileScanner.nextLine();
+                robotOutput = simulator.executeCommand(currentLine);
+                if(currentLine.equalsIgnoreCase("REPORT")){
+                    resultList.add(robotOutput);
+                }
             }
         }
         return resultList;
+    }
+
+    private Simulator initSimulator() {
+        return new Simulator(new MapTable(5,5),new Robot());
     }
 }
