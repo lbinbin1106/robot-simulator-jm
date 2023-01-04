@@ -13,14 +13,14 @@ import java.util.Scanner;
 
 public class GameCommandReader {
 
-    public List<String> processFile(File fileName) throws FileNotFoundException {
+    public List<String> processFile(File fileName) {
         if (fileName == null) {
-            throw new InvalidGameRobotException("File is not found");
+            throw new InvalidGameRobotException("File is not allow null");
         }
         return readFile(fileName);
     }
 
-    private List<String> readFile(File file) throws FileNotFoundException {
+    private List<String> readFile(File file) {
         List<String> resultList = new LinkedList<>();
         try (Scanner fileScanner = new Scanner(file)){
             Simulator simulator = initSimulator();
@@ -34,6 +34,8 @@ public class GameCommandReader {
                     resultList.add(robotOutput);
                 }
             }
+        } catch (FileNotFoundException ex) {
+            throw new InvalidGameRobotException("File is not found");
         }
         return resultList;
     }
