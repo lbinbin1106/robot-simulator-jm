@@ -52,7 +52,7 @@ public class RobotTest {
     @ParameterizedTest
     @MethodSource("testValidPosition")
     public void testMoveReturnValidPosition(int xReturnPos,int yReturnPos,Direction returnDirection, Direction initDirection) {
-        robot.placeRobot(new Position(1,1, initDirection), mapTable);
+        robot.placeRobot(new Position(0,0, initDirection), mapTable);
         robot.move();
         assertEquals(robot.getPosition().getXPos(),xReturnPos);
         assertEquals(robot.getPosition().getYPos(),yReturnPos);
@@ -60,10 +60,27 @@ public class RobotTest {
     }
     private static Stream<Arguments> testValidPosition() {
         return Stream.of(
-                Arguments.of(1, 2, Direction.NORTH, Direction.NORTH),
-                Arguments.of(2, 1, Direction.EAST, Direction.EAST),
-                Arguments.of(0, 1, Direction.WEST, Direction.WEST),
-                Arguments.of(1, 0, Direction.SOUTH, Direction.SOUTH)
+                Arguments.of(0, 1, Direction.NORTH, Direction.NORTH),
+                Arguments.of(1, 0, Direction.EAST, Direction.EAST),
+                Arguments.of(0, 0, Direction.WEST, Direction.WEST),
+                Arguments.of(0, 0, Direction.SOUTH, Direction.SOUTH)
         );
+    }
+    @Test
+    public void testTurnLeftReturnValidDirection() {
+        robot.placeRobot(new Position(1,1,Direction.NORTH),mapTable);
+        robot.turnLeft();
+        assertEquals(robot.getPosition().getDirection(),Direction.WEST);
+    }
+    @Test
+    public void testTurnRightReturnValidDirection() {
+        robot.placeRobot(new Position(1,1,Direction.NORTH),mapTable);
+        robot.turnRight();
+        assertEquals(robot.getPosition().getDirection(),Direction.EAST);
+    }
+    @Test
+    public void testReportPositionWithValidResult() {
+        robot.placeRobot(new Position(1,1,Direction.NORTH),mapTable);
+        assertEquals(robot.reportPosition(),"1,1,NORTH");
     }
 }
