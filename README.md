@@ -6,29 +6,21 @@ The robot movement program is written in Java and with libraries or packages lis
 * Java 8 or above
 * Gradle 2.5 or above
 
-Build/Create JAR instructions
+Build, Run application/test
 ------------------------------
 
 To create new build from source:
 ```
-gradle build
+gradle clean build
 ```
 Run test cases:
 ```
-gradle cleanTest test
+gradle test
 ```
-
-Generate JAR file:
+Run game:
 ```
-gradle fatJar
+gradle run --args="src/main/resources/input-data.txt"
 ```
-
-Execute JAR file with the following command:
-```
-java -jar robot-simulator-jm-1.0-SNAPSHOT.jar input-data.txt
-```
-
-NOTE: You may use the sample data file in src/main/resources folder.
 
 Robot Movement
 ===================

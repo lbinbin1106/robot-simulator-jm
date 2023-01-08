@@ -13,6 +13,7 @@ public class Simulator {
     private MapTable mapTable;
     private Robot robot;
     public String executeCommand(String commandLine){
+        validateCommand(commandLine);
         String[] commandArrays = commandLine.split(" ");
         String robotOutputPos = "";
         try {
@@ -44,7 +45,7 @@ public class Simulator {
 
     private String otherCommand(Command currentCommand) {
         String output = "";
-        validateCommand(currentCommand);
+        validatePosition();
         switch (currentCommand) {
             case MOVE:
                 robot.move();
@@ -62,13 +63,15 @@ public class Simulator {
         return output;
     }
 
-    private void validateCommand(Command currentCommand) {
+    private void validatePosition() {
         if (robot.getPosition() == null) {
             throw new InvalidGameRobotException("Robot initial position is required");
         }
-        if (currentCommand == null) {
-            throw new InvalidGameRobotException("Robot move command is required");
+    }
 
+    private void validateCommand(String command) {
+        if (command == null) {
+            throw new InvalidGameRobotException("Command is required");
         }
     }
 
